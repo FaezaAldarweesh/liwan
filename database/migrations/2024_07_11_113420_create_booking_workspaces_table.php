@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('booking_holes', function (Blueprint $table) {
+        Schema::create('booking_workspaces', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_user');
-            $table->unsignedBigInteger('id_hole');
+            $table->unsignedBigInteger('id_disk');
             $table->unsignedBigInteger('id_plan');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_hole')->references('id')->on('holes')->onDelete('cascade');
-            $table->foreign('id_plan')->references('id')->on('plane_holes')->onDelete('cascade');
+            $table->foreign('id_disk')->references('id')->on('disks')->onDelete('cascade');
+            $table->foreign('id_plan')->references('id')->on('plane_workspaces')->onDelete('cascade');
             $table->date('date');
             $table->integer('total_price');
             $table->string('statuse');
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('booking_holes');
+        Schema::dropIfExists('booking_workspaces');
     }
 };

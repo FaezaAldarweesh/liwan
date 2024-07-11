@@ -4,21 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class services extends Model
+class PlaneHole extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
+    protected $dates = ['deleted_at'];
+
     protected $fillable = [
         'id_hole',
-        'name',
+        'type',
+        'bio',
         'price',
     ];
 
     public function hole(){
         return $this->belongsTo(Hole::class);
     }
-    public function booking_holes()
-    {
-        return $this->belongsToMany(booking_hole::class, 'booking_services');
-    }
+
 }

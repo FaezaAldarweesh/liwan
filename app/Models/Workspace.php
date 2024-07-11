@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Hole extends Model
+class Workspace extends Model
 {
     use HasFactory,SoftDeletes;
     protected $dates = ['deleted_at'];
@@ -15,8 +15,9 @@ class Hole extends Model
         'id_center',
         'name',
         'bio',
-        'description',
+        'work_time',
         'picture',
+        'number_of_disks',
         'statuse',
     ];
 
@@ -24,15 +25,20 @@ class Hole extends Model
         return $this->belongsTo(Center::class);
     }
 
-    public function plane_holes(){
-        return $this->hasMany(PlaneHole::class);
+    public function plane_workspaces(){
+        return $this->hasMany(PlaneWorkspace::class);
     }
 
-    public function hole_services(){
-        return $this->hasMany(HoleService::class);
+    public function disks(){
+        return $this->hasMany(Disk::class);
     }
 
-    public function booking_hole(){
-        return $this->hasMany(BookingHole::class);
+    public function workspace_services(){
+        return $this->hasMany(WorkspaceService::class);
     }
+
+    public function booking_workspaces(){
+        return $this->hasMany(BookingWorkspace::class);
+    }
+
 }

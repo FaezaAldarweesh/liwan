@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Center extends Model
+class Category extends Model
 {
     use HasFactory,SoftDeletes;
     protected $dates = ['deleted_at'];
@@ -15,11 +15,8 @@ class Center extends Model
         'name',
     ];
 
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
-
-    public function holes(){
-        return $this->hasMany(Hole::class);
+    public function communities()
+    {
+        return $this->belongsToMany(Community::class);
     }
 }

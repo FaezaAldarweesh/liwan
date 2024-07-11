@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('plane__holes', function (Blueprint $table) {
+        Schema::create('plane_workspaces', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_hole')->constrained('holes');
+            $table->foreignId('id_workspace')->constrained('workspaces');
             $table->string('type');
             $table->string('bio');
             $table->integer('price');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('plane__holes');
+        Schema::dropIfExists('plane_workspaces');
     }
 };

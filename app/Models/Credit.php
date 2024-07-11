@@ -3,23 +3,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Center extends Model
+class Credit extends Model
 {
     use HasFactory,SoftDeletes;
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'name',
+        'category',
+        'price',
     ];
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function buy_credits(){
+        return $this->hasMany(BuyCredit::class);
     }
 
-    public function holes(){
-        return $this->hasMany(Hole::class);
-    }
 }

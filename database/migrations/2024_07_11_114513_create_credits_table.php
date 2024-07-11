@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('holes', function (Blueprint $table) {
+        Schema::create('credits', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_center')->constrained('centers');
-            $table->string('name')->unique();
-            $table->string('bio');
-            $table->text('description');   
-            $table->string('picture');   
-            $table->string('statuse'); 
+            $table->string('category')->unique();
+            $table->integer('price');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('holes');
+        Schema::dropIfExists('credits');
     }
 };
