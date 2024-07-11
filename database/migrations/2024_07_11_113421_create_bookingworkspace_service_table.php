@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bookinghole_service', function (Blueprint $table) {
+        Schema::create('bookingworkspace_service', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('booking_workspace_id');
             $table->unsignedBigInteger('services_id');
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bookinghole_service');
+        Schema::dropIfExists('bookingworkspace_service');
     }
 };
